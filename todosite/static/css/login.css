@@ -1,0 +1,38 @@
+.login_form {
+    padding: 35px;
+    margin-top: 250px;
+    margin-left: 800px;
+    margin-right: 800px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(186, 215, 245);
+    border: 2px solid rgb(102, 102, 123);
+    border-radius: 5px;
+}
+
+.form_field {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 15px;
+
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.login_button {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 65px;
+
+    background-color: rgb(128, 128, 253);
+    color: aliceblue;
+    align-items: center;
+    font-size: 20px;
+
+    border-radius: 4px;
+}

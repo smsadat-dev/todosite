@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="login_form">
+        <form method="POST" >
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form_field">
+                    {{ field }}
+
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p> 
+                    {% endfor %}
+                {% endif %}
+
+                {% if field.help_text %}
+                    <p class="helptext">{{ field.help_text }}</p>
+                {% endif %}
+
+                </div>
+            {% endfor %}
+            <input type="submit" value="Login" class="login_button"> 
+        </form>
+        <p>Don't have an account? <a href="{% url 'base:register' %}">Register here</a></p>
+    </div>
+
+{% endblock %}

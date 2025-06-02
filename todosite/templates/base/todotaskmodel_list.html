@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+        <p> {{ request.user }} </p> 
+        <form action="{% url 'base:logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <form action="{% url 'base:login' %}" method="POST"> 
+            {% csrf_token %}
+            <button type="submit">Login</button>
+        </form>
+    {% endif %}
+    
+    <h2>Todo List</h2>
+    <a href="{% url 'base:create' %}">Add task</a>
+    
+    <form method="GET">
+        <input type="text" name="searchbar" value={{search_input}}>
+        <input type="submit" value="Search">
+    </form>
+    
+    <table>
+        <tr>
+            <th>Items</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td> {{ task.taskName }} </td>
+                <td>
+                    <a href="{% url 'base:task' task.id %}">View</a>
+                    <a href="{% url 'base:update' task.id %}">Edit</a>
+                    <a href="{% url 'base:delete' task.id %}">Delete</a>
+                </td>
+            </tr>
+        {% empty %}
+            <h3>No items in da list</h3>
+        {% endfor %}
+    </table>
+
+{% endblock %}
